@@ -38,3 +38,6 @@ It's not perfect, but it's real and evolving.
 ## For Visitors
 Feel free to explore the code, suggest ideas, or fork your own version.  
 Every great universe starts with a single line of code.
+
+# Eclipse-of-Will
+e5ee4388a8809337fc79ab00f83a6424eb3985c9
