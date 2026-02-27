@@ -1,8 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/noctis.css' %}">
+    <link rel="stylesheet" href="noctis.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imperium Noctis - Eclipse of Will</title>
@@ -78,7 +77,7 @@
     <div class="royalfamily-grid">
         <!-- King Rhein Noctis -->
         <div class="royalfamily-card">
-            <a href="{% url 'rein' %}">
+            <a href="rein.html">
                 <div class="royalfamily-name">King Rhein Noctis</div>
             </a>
             <p class="latin-name">Rhein Noctis - "The Unwavering Pillar" (Stator Invictus)</p>
@@ -101,7 +100,7 @@
         </div>
 
          <div class="royalfamily-card">
-            <a href="{% url 'freia' %}">
+            <a href="freia.html">
                 <div class="royalfamily-name">Princess Freia Noctis</div>
             </a>
             <p class="latin-name">"Heiress of Silence"</p>
@@ -110,7 +109,7 @@
             <p><span class="highlight">Power:</span> Eidolon-Evolution - turns scars into weapons. Wields Evocatio Ensis and unique battle abilities.</p>
             <p><span class="highlight">Age:</span> 16</p>
             <p><span class="highlight">Height:</span> 170cm</p>
-            <a href="{% url 'freia' %}" class="read-more">Read full chronicle →</a>
+            <a href="freia.html" class="read-more">Read full chronicle →</a>
         </div>
 
         <!-- Heir Bellona Noctis -->
@@ -188,9 +187,9 @@
             </div>
         </div>
 
-        <a href="{% url 'eclipseofwill' %}" class="back-button">← Back to Main</a>
+        <a href="eclipseofwill.html" class="back-button">← Back to Main</a>
     </div>
 
-    <script src="{% static 'js/noctis.js' %}"></script>
+    <script src="noctis.js"></script>
 </body>
 </html>
