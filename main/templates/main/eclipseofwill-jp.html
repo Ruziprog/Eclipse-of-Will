@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}意志の蝕 - 帝国プロファイル{% endblock %}
+
+{% block meta_description %}意志の蝕：ノクティス帝国とルーメン帝国から選択。戦略的ファンタジーワールドで、独自の能力と哲学が待つ。{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/eclipseofwill.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/eclipseofwill-jp.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2 class="page-subtitle">帝国を選択</h2>
+
+<div class="container">
+    <div class="container-half container-left">
+        <a href="{% url 'noctis' %}?lang=ja" class="card-link">
+            <section class="empire-card empire-card--noctis" aria-labelledby="noctis-title">
+                <div class="empire-icon" role="img" aria-label="月のシンボル">🌙</div>
+                <h2 id="noctis-title">ノクティス帝国</h2>
+                <p><strong>統治者: </strong>アミラ女王＆レイン王</p>
+                <p><strong>後継者: </strong>フレイア・ノクティス</p>
+                <p><strong>領域: </strong>影の領域</p>
+                <p><strong>哲学: </strong>犠牲を通じた力</p>
+                <p><strong>特有能力: </strong>イードロン進化</p>
+                <p>永遠の夜の帝国。苦痛から力が生まれ、影が光を支配する場所。</p>
+            </section>
+        </a>
+    </div>
+
+    <div class="container-half container-right">
+        <a href="{% url 'lumen' %}?lang=ja" class="card-link">
+            <section class="empire-card empire-card--lumen" aria-labelledby="lumen-title">
+                <div class="empire-icon" role="img" aria-label="太陽のシンボル">☀️</div>
+                <h2 id="lumen-title">ルーメン帝国</h2>
+                <p><strong>指導者: </strong>啓発評議会</p>
+                <p><strong>領域: </strong>永遠の夜明けの領域</p>
+                <p><strong>哲学: </strong>悟りを通じた力</p>
+                <p><strong>特有能力: </strong>絶対啓発、ルーメン術</p>
+                <p>果てしない光の帝国。真の力は内なる平和と精神的目覚めから来る。</p>
+            </section>
+        </a>
+    </div>
+</div>
+{% endblock %}

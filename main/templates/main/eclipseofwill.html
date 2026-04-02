@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{% if lang == 'ja' %}意志の蝕 - 帝国プロファイル{% else %}Eclipse of Will - Choose Your Empire{% endif %}{% endblock %}
+
+{% block meta_description %}{% if lang == 'ja' %}意志の蝕：ノクティス帝国とルーメン帝国から選択。戦略的ファンタジーワールドで、独自の能力と哲学が待つ。{% else %}Choose your empire in Eclipse of Will - Imperium Noctis or Imperium Lumen. Strategic fantasy world with unique abilities and philosophies.{% endif %}{% endblock %}
+
+{% block content %} 
+<h2 class="page-subtitle">{% if lang == 'ja' %}帝国を選択{% else %}Select Empire{% endif %}</h2>
+
+<div class="container">
+    <!-- Noctis Card -->
+    <div class="container-half container-left">
+        <a href="{% url 'noctis' %}?lang={{ lang }}" class="card-link"> 
+            <section class="empire-card empire-card--noctis">
+                <div class="empire-icon">🌙</div>
+                
+                {% if lang == 'ja' %}
+                    <h2>ノクティス帝国</h2>
+                    <p><strong>統治者: </strong>アミラ女王＆レイン王</p>
+                    <p><strong>後継者: </strong>フレイア・ノクティス</p>
+                    <p><strong>領域: </strong>影の領域</p>
+                    <p><strong>哲学: </strong>犠牲を通じた力</p>
+                    <p><strong>特有能力: </strong>イードロン進化</p>
+                    <p>永遠の夜の帝国。苦痛から力が生まれ、影が光を支配する場所。</p>
+                {% else %}
+                    <h2>IMPERIUM NOCTIS</h2>
+                    <p><strong>Ruler: </strong>Queen Amilla & King Rein</p>
+                    <p><strong>Heir: </strong>Freia Noctis</p>
+                    <p><strong>Domain: </strong>Realm of Shadows</p>
+                    <p><strong>Philosophy: </strong>Power through Sacrifice</p>
+                    <p><strong>Signature Abilities: </strong>Eidolon Evolution</p>
+                    <p>A totalitarian empire built upon the deification of strength. In Imperium Noctis, weakness is not a flaw but a crime against reality itself. Power is forged through suffering, discipline, and irreversible sacrifice, enforced by law, faith, and engineered evolution.</p>
+                {% endif %}
+            </section>
+        </a>
+    </div>
+
+    <!-- Lumen Card -->
+    <div class="container-half container-right">
+        <a href="{% url 'lumen' %}?lang={{ lang }}" class="card-link">  
+            <section class="empire-card empire-card--lumen">
+                <div class="empire-icon">☀️</div>
+                
+                {% if lang == 'ja' %}
+                    <h2>ルーメン帝国</h2>
+                    <p><strong>指導者: </strong>啓発評議会</p>
+                    <p><strong>領域: </strong>永遠の夜明けの領域</p>
+                    <p><strong>哲学: </strong>悟りを通じた力</p>
+                    <p><strong>特有能力: </strong>絶対啓発、ルーメン術</p>
+                    <p>果てしない光の帝国。真の力は内なる平和と精神的目覚めから来る。</p>
+                {% else %}
+                    <h2>IMPERIUM LUMEN</h2>
+                    <p><strong>Leader: </strong>The Enlightened Council</p>
+                    <p><strong>Domain: </strong>Realm of Eternal Dawn</p>
+                    <p><strong>Philosophy: </strong>Power through Enlightenment</p>
+                    <p><strong>Signature Abilities: </strong>Absolute Enlightenment, Lumen Arts</p>
+                    <p>The empire of boundless light, where true power comes from inner peace and spiritual awakening.</p>
+                {% endif %}
+            </section>
+        </a> 
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% load static %}
+<html lang="{% if lang == 'ja' %}ja{% else %}en{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Eclipse of Will - A strategic fantasy world with two opposing empires{% endblock %}">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Base CSS (общие стили) -->
+    <link rel="stylesheet" href="{% static 'main/css/eclipseofwill.css' %}">
+    
+    <!-- Японские стили (только для японской версии) -->
+    {% if lang == 'ja' %}
+        <link rel="stylesheet" href="{% static 'main/css/eow-jp.css' %}">
+    {% endif %}
+    
+    {% block extra_css %}{% endblock %}
+    <title>{% block title %}Eclipse of Will - Choose Your Empire{% endblock %}</title>
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <div class="language-switcher">
+        <button class="lang-btn {% if lang == 'en' %}active{% endif %}" data-lang="en">EN</button>
+        <button class="lang-btn {% if lang == 'ja' %}active{% endif %}" data-lang="ja">日本語</button>
+    </div>
+
+    <header class="site-header">
+    <div class="logo">
+            {% if request.path == '/' %}
+                <h1>ECLIPSE OF WILL</h1>
+            {% endif %}
+    </div>
+</header>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <p id="copyright-text">
+            &copy; {% now "Y" %} Eclipse of Will. 
+            {% if lang == 'ja' %}
+                全著作権所有。
+            {% else %}
+                All rights reserved.
+            {% endif %}
+        </p>
+    </div>
+</footer>
+
+    <script src="{% static 'main/js/eclipseofwill.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обновление футера
+    function updateFooter() {
+        const footer = document.querySelector('footer p');
+        if (!footer) return;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'en';
+        const year = new Date().getFullYear();
+        
+        if (lang === 'ja') {
+            footer.innerHTML = `© ${year} Eclipse of Will. 全著作権所有。`;
+        } else {
+            footer.innerHTML = `© ${year} Eclipse of Will. All rights reserved.`;
+        }
+    }
+    
+    updateFooter();
+    
+    // Кнопки языка с плавным переходом
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.dataset.lang;
+            const currentPath = window.location.pathname;
+            
+            // Анимация исчезновения
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            // После анимации — перезагрузка страницы
+            setTimeout(() => {
+                window.location.href = currentPath + '?lang=' + lang;
+            }, 300);
+        });
+    });
+    
+    // Анимация появления при загрузке
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.4s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция плавного перехода
+    function smoothNavigate(url) {
+        const mainContent = document.querySelector('#main-content');
+        
+        // Анимация ухода старого контента
+        if (mainContent) {
+            mainContent.style.animation = 'slideDownFade 0.4s ease forwards';
+        }
+        
+        setTimeout(() => {
+            window.location.href = url;
+        }, 400);
+    }
+    
+    // Перехватываем клики по карточкам империй
+    document.querySelectorAll('.card-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            smoothNavigate(this.href);
+        });
+    });
+    
+    // Перехватываем кнопку "Назад"
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            smoothNavigate(this.href);
+        });
+    }
+    
+    // Анимация появления при загрузке
+    const mainContent = document.querySelector('#main-content');
+    if (mainContent) {
+        mainContent.style.animation = 'fadeInUp 0.5s ease forwards';
+    }
+});
+</script>
+
+<style>
+    .card-link {
+        text-decoration: none !important;
+    }
+    .card-link:hover {
+        text-decoration: none !important;
+    }
+
+    body {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация исчезновения */
+@keyframes slideDownFade {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+}
+
+#main-content {
+    animation: fadeInUp 0.5s ease forwards;
+}
+</style>
+</body>
+</html>

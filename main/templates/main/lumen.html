@@ -1,0 +1,132 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+Imperium Lumen — Eclipse of Will
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/lumen.css' %}">
+<style>
+/* ===== Вертикальный скролл ===== */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* ===== Контейнер ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: block;
+    flex-direction: column;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc-wrapper" id="toc">
+    <nav class="page-toc">
+        <div class="toc-header">
+            <h3>CONTENTS</h3>
+            <button id="toc-hide" class="toc-toggle" aria-label="Hide contents">▼</button>
+        </div>
+        <ul>
+            <li><a href="#overview" class="toc-link">Overview</a></li>
+            <li><a href="#structure" class="toc-link">Structure</a></li>
+            <li><a href="#ideology" class="toc-link">Ideology</a></li>
+            <li><a href="#luminis" class="toc-link">Absolutum Luminis</a></li>
+            <li><a href="#lights" class="toc-link">Eight Rays</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- ===== PAGE ===== -->
+<div class="container">
+    <header class="header">
+        <h1>IMPERIUM LUMEN</h1>
+        <div class="motto">
+            "Veritas, Fides, Responsum." <br>
+            (Truth. Faith. Responsibility.)
+        </div>
+    </header>
+
+    <!-- ===== OVERVIEW ===== -->
+    <section id="overview" class="content-section">
+        <h2 class="section-title">Imperial Overview</h2>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">14M km²</div><div class="stat-label">Territory</div></div>
+            <div class="stat-card"><div class="stat-value">500M</div><div class="stat-label">Population</div></div>
+            <div class="stat-card"><div class="stat-value">2%</div><div class="stat-label">Annual Growth</div></div>
+            <div class="stat-card"><div class="stat-value">2M</div><div class="stat-label">Military Force</div></div>
+        </div>
+        <p><span class="highlight">Capital:</span> Solaria Magna — city of enlightenment built on colossal mirrors turned toward the sky.</p>
+    </section>
+
+    <!-- ===== STRUCTURE ===== -->
+    <section id="structure" class="content-section">
+        <h2 class="section-title">Political Structure</h2>
+        <p>The Empire is guided by the Archon of Light — chosen by the Council of Eight Rays and regarded as a symbol of humanity’s spiritual maturity.</p>
+
+        <h3 class="section-title">Council of Eight Rays</h3>
+        <div class="council-grid">
+            <div class="council-ray"><div class="ray-name">Knowledge</div>Science & Education</div>
+            <div class="council-ray"><div class="ray-name">Mercy</div>Medicine & Empathy</div>
+            <div class="council-ray"><div class="ray-name">Courage</div>Military & Protection</div>
+            <div class="council-ray"><div class="ray-name">Faith</div>Spiritual Direction</div>
+            <div class="council-ray"><div class="ray-name">Unity</div>Diplomacy & Culture</div>
+            <div class="council-ray"><div class="ray-name">Purity</div>Justice & Moral Law</div>
+            <div class="council-ray"><div class="ray-name">Mind</div>Philosophy & Ethics</div>
+            <div class="council-ray"><div class="ray-name">Destiny</div>Strategy & Foresight</div>
+        </div>
+    </section>
+
+    <!-- ===== IDEOLOGY ===== -->
+    <section id="ideology" class="content-section">
+        <h2 class="section-title">Ideology</h2>
+        <div class="quote">"Power is Responsibility"</div>
+        <p>Power is not a tool of domination, but a burden requiring clarity, discipline, and sacrifice. The Empire protects the Light of Reason even when the world descends into shadow.</p>
+    </section>
+
+    <!-- ===== ABSOLUTUM ===== -->
+    <section id="luminis" class="content-section">
+        <h2 class="section-title">Absolutum Luminis</h2>
+        <div class="ability-section"><h3 class="ability-title">Philosophy</h3><p>True power arises from inner wholeness. The ego is not destroyed — it becomes transparent to reality.</p></div>
+        <div class="ability-section"><h3 class="ability-title">The Path</h3><p>Acceptance, not rejection. Pain and weakness are recognized as parts of the universal flow.</p></div>
+        <div class="ability-section"><h3 class="ability-title">Manifestation</h3><ul><li>Aura of calm presence</li><li>Silence that stabilizes space</li><li>Perception without judgment</li></ul></div>
+        <div class="ability-section"><h3 class="ability-title">Capabilities</h3><ul><li>Speed — 3500 km/h</li><li>Strength — capable of lifting megastructures</li></ul></div>
+        <div class="ability-section"><h3 class="ability-title">Cost</h3><p>Understanding removes illusions. Hatred becomes impossible. Connection with reality grows deeper, yet distance from ordinary perception increases.</p></div>
+    </section>
+
+    <!-- ===== RAYS ===== -->
+    <section id="lights" class="content-section">
+        <h2 class="section-title">Eight Rays of Enlightenment</h2>
+        <div class="principle-grid">
+            <div class="principle-card"><div class="principle-name">AGAPE</div>Transformative love.</div>
+            <div class="principle-card"><div class="principle-name">SOPHIA</div>Perception of truth.</div>
+            <div class="principle-card"><div class="principle-name">CHARIS</div>Power guided by grace.</div>
+            <div class="principle-card"><div class="principle-name">IRENE</div>Inner stillness.</div>
+            <div class="principle-card"><div class="principle-name">LOGOS</div>Truth expressed as structure.</div>
+            <div class="principle-card"><div class="principle-name">PAX</div>Balance of opposites.</div>
+            <div class="principle-card"><div class="principle-name">LUX PERPETUUS</div>Eternal radiance.</div>
+            <div class="principle-card"><div class="principle-name">SPES INVICTA</div>Unconquered hope.</div>
+        </div>
+    </section>
+
+    <a href="{% url 'eclipseofwill' %}" class="back-button">← Back</a>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// TOC toggle
+document.getElementById('toc-hide')?.addEventListener('click', () => {
+    document.getElementById('toc').classList.toggle('collapsed');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,384 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{% if lang == 'ja' %}ノクティス帝国 - 意志の蝕{% else %}Imperium Noctis - Eclipse of Will{% endif %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/noctis.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- HEADER -->
+<div class="header">
+    {% if lang == 'ja' %}
+        <h1>ノクティス帝国</h1>
+        <div class="motto">"Lex Aeternum. Potentia Est Ius."<br>(永遠の法。力は正義なり。)</div>
+    {% else %}
+        <h1>IMPERIUM NOCTIS</h1>
+        <div class="motto">"Lex Aeternum. Potentia Est Ius."<br>(Eternal Law. Power is Right.)</div>
+    {% endif %}
+</div>
+
+<!-- TOC WRAPPER -->
+<div class="toc-wrapper" id="tocWrapper">
+    <nav class="page-toc" id="pageToc">
+        <div class="toc-header">
+            <h3>{% if lang == 'ja' %}目次{% else %}CONTENTS{% endif %}</h3>
+            <button class="toc-toggle" id="tocToggle" aria-label="{% if lang == 'ja' %}目次を非表示{% else %}Hide table of contents{% endif %}">
+                <svg class="toc-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </button>
+        </div>
+        <ul>
+            <li><a href="#overview" class="toc-link">{% if lang == 'ja' %}帝国概要{% else %}Imperial Overview{% endif %}</a></li>
+            <li><a href="#structure" class="toc-link">{% if lang == 'ja' %}政治構造{% else %}Political Structure{% endif %}</a></li>
+            <li><a href="#ideology" class="toc-link">{% if lang == 'ja' %}イデオロギー{% else %}Ideology{% endif %}</a></li>
+            <li><a href="#royal-family" class="toc-link">{% if lang == 'ja' %}皇室{% else %}Royal Family{% endif %}</a></li>
+            <li><a href="#eidolon" class="toc-link">{% if lang == 'ja' %}イードロン進化{% else %}EIDOLON EVOLUTION{% endif %}</a></li>
+            <li><a href="#principles" class="toc-link">{% if lang == 'ja' %}至高原理{% else %}SUPREME PRINCIPLES{% endif %}</a></li>
+        </ul>
+    </nav>
+    <button class="toc-show-btn" id="tocShowBtn" aria-label="{% if lang == 'ja' %}目次を表示{% else %}Show table of contents{% endif %}">
+        <svg class="toc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+</div>
+
+<div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+
+<!-- OVERVIEW SECTION -->
+<div class="content-section" id="overview">
+    <h2 class="section-title">{% if lang == 'ja' %}帝国概要{% else %}Imperial Overview{% endif %}</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">20M km²</div>
+            <div class="stat-label">{% if lang == 'ja' %}領土{% else %}Territory{% endif %}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">1.5B</div>
+            <div class="stat-label">{% if lang == 'ja' %}人口{% else %}Population{% endif %}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">10%</div>
+            <div class="stat-label">{% if lang == 'ja' %}年間成長率{% else %}Annual Growth{% endif %}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">5M</div>
+            <div class="stat-label">{% if lang == 'ja' %}軍事力{% else %}Military Force{% endif %}</div>
+        </div>
+    </div>
+    {% if lang == 'ja' %}
+        <p><span class="highlight">首都:</span> エターナム・ノクティス - 玉座の都市、統治と儀式の力の中心。</p>
+    {% else %}
+        <p><span class="highlight">Capital:</span> Aeternum Noctis - the throne city, center of governance and cult power.</p>
+    {% endif %}
+</div>
+
+
+
+<!-- FAMILY TREE SECTION -->
+<div class="content-section" id="family-tree-section">
+    <h2 class="section-title">{% if lang == 'ja' %}ノクティス家系図{% else %}Noctis Family Tree{% endif %}</h2>
+    <div id="family-tree-container" style="min-height: 500px; width: 100%; overflow-x: auto; background: rgba(0,0,0,0.3); border-radius: 15px; padding: 20px;"></div>
+</div>
+
+
+<!-- STRUCTURE SECTION -->
+<div class="content-section" id="structure">
+    <h2 class="section-title">{% if lang == 'ja' %}政治構造{% else %}Political Structure{% endif %}</h2>
+    {% if lang == 'ja' %}
+        <p>帝国は単なる国家ではなく、力を神聖化するシステムである。その頂点に立つのはノクティス王朝であり、民衆からは法の化身として見なされている。彼らの力は神聖であり、現実を貫く意志であるインペロンによって支えられている。</p>
+    {% else %}
+        <p>The Empire is not merely a state, but a system of deifying power. At its head stands the Noctis Dynasty, seen by the people as embodied avatars of the Law. Their power is sacred, supported by the Imperon - a will that permeates reality.</p>
+    {% endif %}
+</div>
+
+<!-- IDEOLOGY SECTION -->
+<div class="content-section" id="ideology">
+    <h2 class="section-title">{% if lang == 'ja' %}イデオロギー{% else %}Ideology{% endif %}</h2>
+    <div class="quote">{% if lang == 'ja' %}"強くなれ、さもなくば消え去れ。"{% else %}"Be strong or disappear."{% endif %}</div>
+    {% if lang == 'ja' %}
+        <p>これは単なるスローガンではない - 形而上学の法則である。弱さは欠点ではなく、自然に対する罪とみなされる。あらゆる価値観は<span class="highlight">Potentia Est Ius</span>（力は正義なり）という原理に従属する - 力が道徳、法、存在の意味を決定する。</p>
+    {% else %}
+        <p>This is not just a slogan - it's a metaphysical law. Weakness is viewed not as a flaw, but as a sin against nature. All values are subordinated to the principle <span class="highlight">Potentia Est Ius</span> - power determines morality, law, and the meaning of existence.</p>
+    {% endif %}
+</div>
+
+<!-- ROYAL FAMILY SECTION -->
+<div class="content-section" id="royal-family">
+    <h2 class="section-title">{% if lang == 'ja' %}皇室：影に生きる家族の肖像{% else %}The Noctis Dynasty: A Family Portrait in Shadow{% endif %}</h2>
+    <div class="royalfamily-grid">
+        <!-- King Rhein Noctis -->
+        <div class="royalfamily-card">
+            <div class="royalfamily-name">{% if lang == 'ja' %}レイン・ノクティス王{% else %}King Rhein Noctis{% endif %}</div>
+            <p class="latin-name">{% if lang == 'ja' %}レイン・ノクティス - 「揺るぎなき柱」（スタトール・インウィクトゥス）{% else %}Rhein Noctis - "The Unwavering Pillar" (Stator Invictus){% endif %}</p>
+            
+            {% if lang == 'ja' %}
+                <p><span class="highlight">名前の意味:</span> 「川」または「流れ」を意味する古代語に由来するが、ノクティスの文脈では「必然性の流れ」となる。</p>
+                <p><span class="highlight">性格:</span> 外見上は理想的な帝国の支配者：冷徹で、無感情で、計算高い。彼の決定は非人道的に見えるが、それはより高次の非人間的な生存の論理に従属しているためだ。内面では壊れた男であり父親。フレイアに対する「残酷さ」の行為のたびに、彼の魂の一部が焼け落ちる。</p>
+                <p><span class="highlight">力:</span> クラトスの原理（苦痛を通じた力）の具現化。彼の真の技は苦痛の中の可能性を見出し、それを冷酷に実現することだ。</p>
+            {% else %}
+                <p><span class="highlight">Meaning of Name:</span> From the ancient word meaning "river" or "flow", but in the context of Noctis it is "The Flow of Necessity".</p>
+                <p><span class="highlight">Character:</span> Outwardly - the ideal imperial ruler: icy, emotionless, calculating. His decisions seem inhumane because they are subordinated to a higher, impersonal logic of survival. Inwardly - a broken man and father. Every act of "cruelty" towards Freia burns away part of his soul.</p>
+                <p><span class="highlight">Power:</span> Embodiment of the Kratos Principle (Power-Through-Pain). His true skill is seeing potential in pain and ruthlessly realizing it.</p>
+            {% endif %}
+            
+            <p><span class="highlight">{% if lang == 'ja' %}年齢:{% else %}Age:{% endif %}</span> 40</p>
+            <p><span class="highlight">{% if lang == 'ja' %}身長:{% else %}Height:{% endif %}</span> 190cm</p>
+        </div>
+
+        <!-- Queen Amilla Noctis -->
+        <div class="royalfamily-card">
+            <div class="royalfamily-name">{% if lang == 'ja' %}アミラ・ノクティス女王{% else %}Queen Amilla Noctis{% endif %}</div>
+            <p class="latin-name">{% if lang == 'ja' %}アミラ・ノクティス - 「鉄の薔薇」（ローザ・フェレア）{% else %}Amilla Noctis - "The Iron Rose" (Rosa Ferrea){% endif %}</p>
+            
+            {% if lang == 'ja' %}
+                <p><span class="highlight">名前の意味:</span> 「守護者」または「保護者」を意味する古代語に由来する。</p>
+                <p><span class="highlight">性格:</span> ラインがシステムの冷徹な理性なら、アミラはその傷ついた心臓だ。彼女はより感情的で、その分より目に見えて苦しむ。彼女の思いやりは、彼女自身との絶え間ない静かな内戦だ。</p>
+                <p><span class="highlight">力:</span> ニーケ・メライノスの原理（黒き勝利）の導管。彼女は完全で最終的な制圧の達人であり、勝利だけでなく抵抗の記憶そのものの抹消を確実にする。</p>
+            {% else %}
+                <p><span class="highlight">Meaning of Name:</span> Derived from the ancient word for "keeper" or "protector".</p>
+                <p><span class="highlight">Character:</span> If Rhein is the cold reason of the system, then Amilla is its wounded heart. She is more emotional and therefore suffers more visibly. Her compassion is a constant, quiet civil war with herself.</p>
+                <p><span class="highlight">Power:</span> Channel of the Nike Melainē Principle (Black Victory). She is a master of total, final suppression, ensuring not just victory but the erasure of all memory of resistance.</p>
+            {% endif %}
+            
+            <p><span class="highlight">{% if lang == 'ja' %}年齢:{% else %}Age:{% endif %}</span> 40</p>
+            <p><span class="highlight">{% if lang == 'ja' %}身長:{% else %}Height:{% endif %}</span> 185cm</p>
+        </div>
+
+        <!-- Princess Freia Noctis -->
+        <div class="royalfamily-card">
+            <a href="{% url 'freia' %}?lang={{ lang }}" style="text-decoration: none; color: inherit;">
+                <div class="royalfamily-name">{% if lang == 'ja' %}フレイア・ノクティス王女{% else %}Princess Freia Noctis{% endif %}</div>
+            </a>
+            <p class="latin-name">{% if lang == 'ja' %}"静寂の継承者"{% else %}"Heiress of Silence"{% endif %}</p>
+            
+            {% if lang == 'ja' %}
+                <p><span class="highlight">役割:</span> ノクティス帝国の王女であり唯一の生存する継承者。</p>
+                <p><span class="highlight">性格:</span> 人間性を除去するための残酷な「工学」の産物。シニカルで、アロマンティックで、深い心理的傷跡を持つ。唯一の弱点は猫。</p>
+                <p><span class="highlight">力:</span> イードロン進化 - 傷跡を武器に変える。エヴォカティオ・エンシスと独自の戦闘能力を操る。</p>
+            {% else %}
+                <p><span class="highlight">Role:</span> Princess and sole surviving heir of Imperium Noctis.</p>
+                <p><span class="highlight">Character:</span> Product of brutal "engineering" to remove humanity. Cynical, aromantic, with deep psychological scars. Only vulnerable to cats.</p>
+                <p><span class="highlight">Power:</span> Eidolon-Evolution - turns scars into weapons. Wields Evocatio Ensis and unique battle abilities.</p>
+            {% endif %}
+            
+            <p><span class="highlight">{% if lang == 'ja' %}年齢:{% else %}Age:{% endif %}</span> 16</p>
+            <p><span class="highlight">{% if lang == 'ja' %}身長:{% else %}Height:{% endif %}</span> 170cm</p>
+            
+            <a href="{% url 'freia' %}?lang={{ lang }}" class="read-more" style="text-decoration: none;">
+                {% if lang == 'ja' %}完全な記録を読む →{% else %}Read full chronicle →{% endif %}
+            </a>
+        </div>
+
+        <!-- Heir Bellona Noctis -->
+        <div class="royalfamily-card">
+            <div class="royalfamily-name">{% if lang == 'ja' %}ベローナ・ノクティス継承者（故人）{% else %}Heiress Bellona Noctis (Deceased){% endif %}</div>
+            <p class="latin-name">{% if lang == 'ja' %}ベローナ・ノクティス - 失われた長女{% else %}Bellona Noctis - The Lost Firstborn{% endif %}</p>
+            
+            {% if lang == 'ja' %}
+                <p><span class="highlight">名前の由来:</span> ローマの戦争の女神、マルスの妹。強くて正義の指導者になることを願って名付けられた、強さと勇気に満ちた名前。</p>
+                <p><span class="highlight">生前の性格:</span> 両親の記憶によれば - 明るく、好奇心旺盛で、優しい少女で、彼らの本来の理想主義を受け継いでいた。彼女は世界の架け橋になる可能性があった。</p>
+            {% else %}
+                <p><span class="highlight">Name Origin:</span> Roman goddess of war, sister of Mars. A name full of strength and valor given to a child they wanted to see as a strong and just leader.</p>
+                <p><span class="highlight">Character (in life):</span> By her parents' memories - a bright, curious, kind girl who inherited their original idealism. She could have become a bridge between worlds.</p>
+            {% endif %}
+            
+            <div class="heritage-box">
+                <p><span class="highlight">{% if lang == 'ja' %}遺産と「第二の娘」:{% else %}Heritage & "Second Daughter":{% endif %}</span></p>
+                {% if lang == 'ja' %}
+                    <p>9歳の時、彼女は弟か妹を夢見て、庶民の友達と一緒に美しい石を集めてブレスレットを作り、プレゼントしようとしていた。</p>
+                    <p>彼女は戴冠式の直後、友人の誕生日を訪れている時に略奪者に殺された。</p>
+                    <p>恨みと恐れに満ちた彼女の安らかでない魂は、原理と取引をして生まれたばかりのフレイアに入り込んだ。こうしてフレイアは誕生から姉の「器」となった。</p>
+                {% else %}
+                    <p>At age 9, she dreamed of a little brother or sister, collecting pretty stones with her commoner friends to make a bracelet as a gift.</p>
+                    <p>She was killed by marauders while visiting a friend's birthday shortly after her coronation.</p>
+                    <p>Her unquiet soul, full of resentment and fear, made a deal with the Principles and entered the newborn Freia. Thus, Freia has been a "vessel" for her older sister since birth.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ANCESTORS SECTION -->
+<div class="content-section" id="ancestors">
+    <h2 class="section-title">{% if lang == 'ja' %}ご先祖様{% else %}Ancestors{% endif %}</h2>
+    <div class="royalfamily-grid">
+        {% for character in ancestors %}
+        <div class="royalfamily-card">
+            <div class="royalfamily-name">{{ character.name }}</div>
+            {% if character.title %}
+                <p class="latin-name">{{ character.title }}</p>
+            {% endif %}
+            <p><span class="highlight">{% if lang == 'ja' %}役割{% else %}Role{% endif %}:</span> Founder / Ancestor</p>
+            <p><span class="highlight">{% if lang == 'ja' %}年齢{% else %}Age{% endif %}:</span> {{ character.age }}</p>
+            {% if character.quote %}
+                <p class="quote">"{{ character.quote }}"</p>
+            {% endif %}
+        </div>
+        {% empty %}
+            <p>{% if lang == 'ja' %}祖先情報はありません{% else %}No ancestors recorded{% endif %}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- EIDOLON SECTION -->
+<div class="content-section" id="eidolon">
+    <h2 class="section-title">{% if lang == 'ja' %}イードロン進化（EE）{% else %}EIDOLON EVOLUTION (EE){% endif %}</h2>
+    
+    <div class="ability-section">
+        <h3 class="ability-title">{% if lang == 'ja' %}哲学的基盤{% else %}PHILOSOPHICAL FOUNDATION{% endif %}</h3>
+        {% if lang == 'ja' %}
+            <p><span class="highlight">公理:</span> 「力は唯一の通貨である。弱さは大罪である。」</p>
+            <p><span class="highlight">原理:</span> 力は与えられるものではない。それは意志から結晶化し、絶対的な苦痛の瞬間に顕現する。</p>
+        {% else %}
+            <p><span class="highlight">Axiom:</span> "Power is the only currency. Weakness is a mortal sin."</p>
+            <p><span class="highlight">Principle:</span> Power is not granted. It crystallizes from will, manifested at the moment of absolute suffering on the brink of non-existence.</p>
+        {% endif %}
+    </div>
+
+    <div class="ability-section">
+        <h3 class="ability-title">{% if lang == 'ja' %}活性化プロセス{% else %}ACTIVATION PROCESS{% endif %}</h3>
+        {% if lang == 'ja' %}
+            <p><span class="highlight">引き金:</span> 第五周期で達成される意志と苦痛の臨界質量。</p>
+            <p><span class="highlight">生理的現象:</span></p>
+            <ul>
+                <li>明るい紫色の光を放つ血管</li>
+                <li>意識的な身体再構築 - 骨の破壊と再形成</li>
+                <li>苦痛の震源地からのイードロン武器の物質化</li>
+            </ul>
+        {% else %}
+            <p><span class="highlight">Trigger:</span> Critical mass of will and pain achieved in the fifth cycle.</p>
+            <p><span class="highlight">Physiological Manifestations:</span></p>
+            <ul>
+                <li>Veins glowing with bright purple light</li>
+                <li>Conscious bodily restructuring - bones breaking and reforming</li>
+                <li>Materialization of Eidolon-Weapon from the epicenter of pain</li>
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="ability-section">
+        <h3 class="ability-title">{% if lang == 'ja' %}獲得能力{% else %}ACQUIRED ABILITIES{% endif %}</h3>
+        {% if lang == 'ja' %}
+            <p><span class="highlight">根本的な生理的再構築:</span></p>
+            <ul>
+                <li>超人的な力（128トンの扉を開けられる）</li>
+                <li>強化された速度（約3500 km/h）、持久力、反応速度</li>
+                <li>毒物および精神攻撃への免疫</li>
+            </ul>
+            <p><span class="highlight">イードロン武器（EW）:</span> 持ち主の苦痛の性質を反映する独自の神器。持ち主のみが使用可能。</p>
+        {% else %}
+            <p><span class="highlight">Fundamental Physiological Restructuring:</span></p>
+            <ul>
+                <li>Superhuman strength (capable of opening 128-ton doors)</li>
+                <li>Enhanced speed (~3500 km/h), endurance, reaction time</li>
+                <li>Immunity to poisons and mental attacks</li>
+            </ul>
+            <p><span class="highlight">Eidolon-Weapon (EW):</span> Unique artifact reflecting the nature of the bearer's suffering. Only the bearer can wield it.</p>
+        {% endif %}
+    </div>
+
+    <div class="ability-section">
+        <h3 class="ability-title">{% if lang == 'ja' %}代償と帰結{% else %}COST AND CONSEQUENCES{% endif %}</h3>
+        {% if lang == 'ja' %}
+            <p><span class="highlight">人間性の喪失:</span> 人格は不可逆的に消去され、実利的でシニカルな意志に置き換えられる。</p>
+            <p><span class="highlight">実存的孤独:</span> 自らの本質と力ゆえに通常の生活に戻ることができない。</p>
+        {% else %}
+            <p><span class="highlight">Loss of Humanity:</span> Personality is irreversibly erased and replaced with pragmatic, cynical will.</p>
+            <p><span class="highlight">Existential Loneliness:</span> Inability to return to normal life due to one's nature and power.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- SUPREME PRINCIPLES SECTION -->
+<div class="content-section" id="principles">
+    <h2 class="section-title">{% if lang == 'ja' %}至高原理：絶対意志の階層{% else %}SUPREME PRINCIPLES: Hierarchy of Absolute Will{% endif %}</h2>
+    <div class="principle-grid">
+        <div class="principle-card">
+            <div class="principle-name">{% if lang == 'ja' %}アナンケ（必然性の至高原理）{% else %}ANANKE (Supreme Principle of Necessity){% endif %}</div>
+            {% if lang == 'ja' %}
+                <p>すべてのノクティス哲学の第一原因であり正当化。彼女は「議論の余地なきもの」である。戦争、苦痛、残酷さ - これらは悪ではなく、存在の必要条件である。</p>
+                <p><span class="highlight">弱点:</span> 純粋で不合理な偶然性または絶対的な根拠のない信仰には無力。</p>
+            {% else %}
+                <p>The prime cause and justification of all Noctis philosophy. She is "That Which Cannot Be Disputed." War, pain, cruelty - not evil, but necessary conditions of existence.</p>
+                <p><span class="highlight">Weakness:</span> Powerless against pure, irrational randomness or absolute, unfounded faith.</p>
+            {% endif %}
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-name">{% if lang == 'ja' %}クラトス（苦痛による力の至高原理）{% else %}KRATOS (Supreme Principle of Power-Through-Pain){% endif %}</div>
+            {% if lang == 'ja' %}
+                <p>力の神ではなく、苦痛によって購われた原理。彼は「いかなる真の力も、それに苦しまなければならない」という公理を体現する。</p>
+                <p><span class="highlight">弱点:</span> 苦痛から完全に解放された存在に直面すると、彼の力は自分自身に対して向けられる。</p>
+            {% else %}
+                <p>Not a god of strength, but the Principle purchased through suffering. He embodies the axiom: "Any true power must be suffered for."</p>
+                <p><span class="highlight">Weakness:</span> His power turns against him when facing beings completely free from suffering.</p>
+            {% endif %}
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-name">{% if lang == 'ja' %}ニーケ・メライノス（黒き勝利の至高原理）{% else %}NIKE MELAINOS (Supreme Principle of Black Victory){% endif %}</div>
+            {% if lang == 'ja' %}
+                <p>単なる勝利ではなく、敗者の完全な消滅。彼女は記憶、遺産、敵の再生の可能性そのものの抹消を要求する。</p>
+                <p><span class="highlight">弱点:</span> 「勝利」の概念が存在しない戦闘では彼女の力は無意味。</p>
+            {% else %}
+                <p>Not just victory, but total annihilation of the defeated. She requires the erasure of memory, legacy, and the very possibility of the enemy's rebirth.</p>
+                <p><span class="highlight">Weakness:</span> Her power is useless in battles where there is no concept of "victory."</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- BACK BUTTON -->
+<a href="{% url 'eclipseofwill' %}?lang={{ lang }}" class="back-button" style="display: inline-block; margin-top: 30px; text-decoration: none;">
+    {% if lang == 'ja' %}← メインに戻る{% else %}← Back to Main{% endif %}
+</a>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'main/js/noctis.js' %}"></script>
+    
+    <!-- OrgChart библиотеки -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/orgchart@3.3.6/js/jquery.orgchart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/orgchart@3.3.6/css/jquery.orgchart.min.css">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const treeData = {
+                name: 'Cassius Noctis',
+                title: 'Основатель династии',
+                children: [
+                    {
+                        name: 'Старшая дочь',
+                        title: 'Ветвь Силы',
+                        children: [
+                            { name: 'Наследники ветви Силы', title: 'Правители' }
+                        ]
+                    },
+                    {
+                        name: 'Младший сын',
+                        title: 'Ветвь Стратегии',
+                        children: [
+                            { name: 'Наследники ветви Стратегии', title: 'Правители' }
+                        ]
+                    }
+                ]
+            };
+
+            $('#family-tree-container').orgchart({
+                'data': treeData,
+                'nodeContent': 'title',
+                'direction': 't2b',
+                'pan': true,
+                'zoom': true
+            });
+        });
+    </script>
+{% endblock %}
